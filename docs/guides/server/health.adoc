@@ -14,9 +14,12 @@ Keycloak has built in support for health checks. This {section} describes how to
 
 Keycloak exposed health endpoints are three:
 
-* `/health`
+* `/health` — same as the `/health/ready` endpoint below
 * `/health/live`
+** if the Keycloak server process is running, responds with HTTP status `200 OK`
 * `/health/ready`
+** if the Keycloak server process is running and the database is reachable, responds with HTTP status `200 OK`
+** if the Keycloak server process is running but the database is not reachable, responds with HTTP status `503 Service Unavailable`
 
 The result is returned in json format and it looks as follows:
 [source, json]
